@@ -5,11 +5,13 @@ const eventSchema = new mongoose.Schema({
   name: {
     type    : String,
     required: true,
+    unique: false
   },
 
-  topic: {
+  description: {
     type    : String,
     required: true,
+    unique: false
   },
 
   users: [
@@ -23,11 +25,12 @@ const eventSchema = new mongoose.Schema({
 
   expiration: {
     type: Date,
-    required: true
+    required: true,
+    unique: false
   }
 
 });
 
 module.exports = eventSchema;
 
-// { "name": "Cats or Dogs", "topic": "Do you like Cats better than Dogs", "users": ["5869f89eaa07c6756ab2d23f"],"count": {"yes": 1, "no": 0}, "expiration": 1352540684243}
+// db.events.insert({ "name": "Cats or Dogs", "topic": "Do you like Cats better than Dogs", "users": [{"id":"5869f89eaa07c6756ab2d23f"}],"count": {"yes": 1, "no": 0}, "expiration": 1352540684243})
